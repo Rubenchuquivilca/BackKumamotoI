@@ -9,4 +9,5 @@ public interface CursoService {
 	public Curso findById(Long idcursos);
 	public Curso save(Curso curso);
 	public void delete (Long idcursos);
+	List<Curso> listCursosByGrado(Long idgrado);
 }

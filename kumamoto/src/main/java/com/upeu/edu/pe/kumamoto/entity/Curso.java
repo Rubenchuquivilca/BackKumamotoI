@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +32,12 @@ public class Curso implements Serializable {
 	private int estado;
 	@Column(length=45)
 	private String progreso;
+	@ManyToOne
+	@JoinColumn(name="idgrado")
+	Grado idgrado;
+	@ManyToOne
+	@JoinColumn(name="iddocente")
+	Docente iddocente;
 	
 	public Curso() {
 		super();
@@ -37,7 +45,8 @@ public class Curso implements Serializable {
 	
 	}
 
-	public Curso(Long idcursos, String nombre_cur, Date fecha_inicio, Date fecha_fin, int estado, String progreso) {
+	public Curso(Long idcursos, String nombre_cur, Date fecha_inicio, Date fecha_fin, int estado, String progreso,
+			Grado idgrado, Docente iddocente) {
 		super();
 		this.idcursos = idcursos;
 		this.nombre_cur = nombre_cur;
@@ -45,6 +54,8 @@ public class Curso implements Serializable {
 		this.fecha_fin = fecha_fin;
 		this.estado = estado;
 		this.progreso = progreso;
+		this.idgrado = idgrado;
+		this.iddocente = iddocente;
 	}
 
 	public Long getIdcursos() {
@@ -94,9 +105,20 @@ public class Curso implements Serializable {
 	public void setProgreso(String progreso) {
 		this.progreso = progreso;
 	}
-	
-	
-	
-	
-	
+
+	public Grado getIdgrado() {
+		return idgrado;
+	}
+
+	public void setIdgrado(Grado idgrado) {
+		this.idgrado = idgrado;
+	}
+
+	public Docente getIddocente() {
+		return iddocente;
+	}
+
+	public void setIddocente(Docente iddocente) {
+		this.iddocente = iddocente;
+	}
 }

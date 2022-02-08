@@ -1,12 +1,14 @@
 package com.upeu.edu.pe.kumamoto.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Grado implements Serializable {
 	private String nom_seccion;
 	@Column(length=45)
 	private String nom_tutor;
+	@OneToMany(mappedBy="idgrado")
+	private List<Curso> cursos;
+	
 	public Grado() {
 		super();
 		// TODO Auto-generated constructor stub

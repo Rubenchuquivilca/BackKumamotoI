@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.upeu.edu.pe.kumamoto.dao.CursoDao;
+import com.upeu.edu.pe.kumamoto.dao.GradoDao;
 import com.upeu.edu.pe.kumamoto.entity.Curso;
+import com.upeu.edu.pe.kumamoto.entity.Grado;
 import com.upeu.edu.pe.kumamoto.service.CursoService;
 
 @Service
@@ -15,6 +17,9 @@ public class CursoServiceImpl implements CursoService{
 
 	@Autowired
 	private CursoDao cursoDao;
+	
+	@Autowired
+	private GradoDao gradoDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -39,6 +44,13 @@ public class CursoServiceImpl implements CursoService{
 	public void delete(Long idcursos) {
 		// TODO Auto-generated method stub
 		cursoDao.deleteById(idcursos);
+	}
+
+	@Override
+	public List<Curso> listCursosByGrado(Long idgrado) {
+		// TODO Auto-generated method stub
+		Grado gradoEncontrado = gradoDao.findById(idgrado).orElse(null);
+		return cursoDao.findCursoByIdgrado(gradoEncontrado);
 	}
 
 }
