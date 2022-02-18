@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.upeu.edu.pe.kumamoto.entity.Grado;
 import com.upeu.edu.pe.kumamoto.service.GradoService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping("/apisis")
 @RestController
 public class GradoController {
