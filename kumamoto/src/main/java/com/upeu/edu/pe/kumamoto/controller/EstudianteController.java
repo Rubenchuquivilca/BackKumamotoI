@@ -99,10 +99,18 @@ public class EstudianteController {
 
 		}
 
+		if (estudiantesByCurso.isEmpty()) {
+
+			responses.put("message", "No existe estudiantes en el curso!");
+
+			return new ResponseEntity<Map<String, Object>>(responses, HttpStatus.NOT_FOUND);
+
+		}
+
 		responses.put("message", "Estudiantes obteneidos de manera correcta!");
 		responses.put("estudiantes", estudiantesByCurso);
 
 		return new ResponseEntity<Map<String, Object>>(responses, HttpStatus.OK);
-		
+
 	}
 }
