@@ -24,20 +24,24 @@ import com.upeu.edu.pe.kumamoto.service.DocenteService;
 public class DocenteController {
 	
 	@Autowired
-	 private DocenteService docenteService;
+	private DocenteService docenteService;
+
 	@GetMapping("/docente")
 	public List<Docente>readAll(){
 		return(List<Docente>) docenteService.findAll();
 	}
+
 	@GetMapping("docente/{iddocente}")
 	public Docente read (@PathVariable Long iddocente) {
 		return docenteService.findById(iddocente);
 	}
+
 	@PostMapping("/docente")
     @ResponseStatus(HttpStatus.CREATED)
 	public Docente create(@RequestBody Docente docente) {
 		return docenteService.save(docente);
 	}
+
 	@PutMapping("/editar/{iddocente}")
 	public Docente update(@RequestBody Docente docente, @RequestBody Long iddocente) {
 		Docente editar_docente = docenteService.findById(iddocente);

@@ -28,15 +28,18 @@ public class NotaController {
 	public List<Nota> readAll(){
 		return (List<Nota>) notaService.findAll();
 	}
+
 	@GetMapping("/nota/{idnota}")
 	public Nota read (@PathVariable Long idnota) {
 		return notaService.findById(idnota);
 	}
+
 	@PostMapping("/savenota")
 	@ResponseStatus(HttpStatus.CREATED)
 	private Nota create(Nota nota) {
 		return notaService.save(nota);
 	}
+
 	@PutMapping("/editnot/{idnota}")
 	public Nota update (@RequestBody Nota nota, @PathVariable Long idnota) {
 		Nota editar_nota = notaService.findById(idnota);
@@ -52,8 +55,11 @@ public class NotaController {
 		
 		return notaService.save(editar_nota);
 	}
+
 	@DeleteMapping("/deletenot/{idnota}")
 	public void delete(@PathVariable Long idnota) {
 		notaService.delete(idnota);
 	}
+
+
 }
